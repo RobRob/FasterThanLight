@@ -16,8 +16,6 @@ public abstract class Weapon {
 	protected double breach = 0.0;
 	protected double stun = 0.0;
 	
-	protected boolean isPowered = false;
-	
 	// GET AND SET METHODS
 	
 	public String getName() {return name;}
@@ -32,8 +30,6 @@ public abstract class Weapon {
 	public double getFireChance() {return fire;}
 	public double getBreachChance() {return breach;}
 	public double getStunChance() {return stun;}
-	
-	public boolean isPowered() {return isPowered;}
 	
 	// OTHER METHODS
 }

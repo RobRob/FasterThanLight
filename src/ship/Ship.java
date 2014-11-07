@@ -2,6 +2,8 @@ package ship;
 
 import java.util.*;
 
+import system.Weapons.InstalledWeapon;
+
 public abstract class Ship {
 	
 	// INSTANCE VARIABLES
@@ -278,7 +280,7 @@ public abstract class Ship {
 		// generate weapons readout
 		system.Weapons weaponsSys = (system.Weapons) getInstalledSystem(system.SystemEnum.WEAPONS);
 		if (weaponsSys != null) {
-			for (weapon.Weapon w : weaponsSys.getWeapons()) {
+			for (InstalledWeapon w : weaponsSys.getWeapons()) {
 				rS += "Weapon Name: " + w.getName() + " IsPowered?: " + w.isPowered() + " Power Cost: " + w.getPowerReq() + 
 					  " Weapon Cooldown: " + w.getCooldown() + "\n";
 			}
