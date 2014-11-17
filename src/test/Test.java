@@ -18,8 +18,6 @@ public class Test {
 			String[] userInputArray = userInput.split(" ");
 			
 			switch (userInputArray[0]) {
-			case "sendpower" : kestrel.sendPower(system.SystemEnum.WEAPONS, 1); break;
-			case "recievepower" : kestrel.recievePower(system.SystemEnum.WEAPONS, 1); break;
 			case "moveR4" : testCrew.moveToSquare(testSquareR4); break;
 			case "moveR9" : testCrew.moveToSquare(testSquareR9); break;
 			case "getstats" : System.out.println(kestrel.generateReadout()); break;

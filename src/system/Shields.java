@@ -1,6 +1,8 @@
 package system;
 
-public class Shields extends MainSystem {
+import time.Updateable;
+
+public class Shields extends MainSystem implements Updateable {
 	
 	protected double shieldStrength;
 	protected double shieldCapacity;
@@ -22,7 +24,7 @@ public class Shields extends MainSystem {
 	public double getShieldCapacity() {return shieldCapacity;}
 	public double getChargeSpeed() {return chargeSpeed;}
 	
-	public void updateShields(double time) {
+	public void update(double time) {
 		shieldStrength += chargeSpeed*time;
 		if (shieldStrength > shieldCapacity) {shieldStrength = shieldCapacity;}
 	}

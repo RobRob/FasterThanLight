@@ -25,6 +25,8 @@ public abstract class System {
 	public abstract int getSystemLevel();
 	public abstract int getSystemCap();
 	
+	public abstract void update(double time);
+	
 	// make a general is active method
 	public layout.Room getLocation() {return location;}
 	public void setLocation(layout.Room r) {location = r;}
