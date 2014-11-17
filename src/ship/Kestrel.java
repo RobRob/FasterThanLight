@@ -7,8 +7,7 @@ public class Kestrel extends Ship {
 		hull = 30;
 		maxHull = 30;
 		
-		reactorPower = 3;
-		reactorCapacity = 8;
+		reactor = new shipComponents.Reactor(3, 8);
 		
 		shipCrew.add(new crew.Human());
 		shipCrew.add(new crew.Human());
@@ -28,9 +27,7 @@ public class Kestrel extends Ship {
 		installedSystems.put(system.SystemEnum.SENSORS, new system.Sensors(1));
 		installedSystems.put(system.SystemEnum.DOORS, new system.Doors(1));
 		
-		fuel = 16;
-		missiles = 8;
-		droneParts = 2;
+		inventory = new shipComponents.Inventory(16, 8, 2);
 		
 		shipRepresentation = new String[][]{
 				{"--","--","--","--","--","--","R1","R1","--","--","--","--","--","--","--"},

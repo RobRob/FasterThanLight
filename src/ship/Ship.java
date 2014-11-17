@@ -3,6 +3,7 @@ package ship;
 import java.util.*;
 
 import system.Weapons.InstalledWeapon;
+import shipComponents.*;
 
 public abstract class Ship {
 	
@@ -11,8 +12,7 @@ public abstract class Ship {
 	protected int hull;
 	protected int maxHull;
 	
-	protected int reactorPower;
-	protected int reactorCapacity;
+	protected Reactor reactor;
 	protected int maxReactorCapacity = 25;
 	
 	protected ArrayList<crew.Crew> shipCrew = new ArrayList<crew.Crew>();
@@ -28,9 +28,7 @@ public abstract class Ship {
 	protected Map<String, layout.Room> rooms = new HashMap<String, layout.Room>();
 	protected Map<List<Integer>, layout.Square> squares = new HashMap<List<Integer>, layout.Square>();
 	
-	protected int fuel;
-	protected int missiles;
-	protected int droneParts;
+	protected Inventory inventory;
 	
 	protected int maxWeapons;
 	protected int maxDrones;
@@ -46,10 +44,6 @@ public abstract class Ship {
 	public int getHull() {return hull;}
 	public int getMaxHull() {return maxHull;}
 	
-	public int getReactorPower() {return reactorPower;}
-	public int getReactorCapacity() {return reactorCapacity;}
-	public int getMaxReactorCapacity() {return maxReactorCapacity;}
-	
 	public ArrayList<crew.Crew> getShipCrew() {return shipCrew;}
 	public int getMaxCrewSize() {return maxCrewSize;}
 	
@@ -58,64 +52,16 @@ public abstract class Ship {
 	
 	public augmentation.Augmentation[] getInstalledAugmentations() {return installedAugmentations;}
 	
-	public int getFuel() {return fuel;}
-	public int getMissiles() {return missiles;}
-	public int getDroneParts() {return droneParts;}
-	
 	public double getEvasion() {return evasion;}
 	public int getOxygen() {return (int) oxygen;} // Returns as an int for display
 	
 	// OTHER METHODS
-	
-	public boolean canUseFuel(int f) {
-		if (fuel - f >= 0) {return true;}
-		else {return false;}
-	}
-	
-	public boolean canUseMissiles(int m) {
-		if (missiles - m >= 0) {return true;}
-		else {return false;}
-	}
-	
-	public boolean canUseDroneParts(int d) {
-		if (droneParts - d >= 0) {return true;}
-		else {return false;}
-	}
-	
-	public void useFuel(int f) {fuel -= f;}
-	public void useMissiles(int m) {missiles -= m;}
-	public void useDroneParts(int d) {droneParts -= d;}
 	
 	public system.System getInstalledSystem(system.SystemEnum systemType) {
 		if (installedSystems.containsKey(systemType)) {
 			return installedSystems.get(systemType);
 		}
 		else {return null;}
-	}
-	
-	private void modifyReactorPower(int p) {
-		reactorPower += p;
-	}
-	
-	public boolean sendPower(system.SystemEnum sys, int power) {
-		if (getReactorPower() < power) {return false;}
-		system.MainSystem targetSystem = (system.MainSystem) getInstalledSystem(sys);
-		if (targetSystem.recievePower(power)) {
-			modifyReactorPower(-power);
-			return true;
-		}
-		else {return false;}
-	}
-	
-	public boolean recievePower(system.SystemEnum sys, int power) {
-		if (getReactorPower() + power > getMaxReactorCapacity()) {return false;}
-		system.MainSystem targetSystem = (system.MainSystem) getInstalledSystem(sys);
-		if (targetSystem.sendPower(power)) {
-			modifyReactorPower(power);
-			return true;
-		}
-		else {return false;}
-		
 	}
 	
 	public void updateEvasion() {
@@ -252,11 +198,11 @@ public abstract class Ship {
 		
 		// general ship readout
 		rS += "Hull Strength: " + getHull() + "/" + getMaxHull() + "\n";
-		rS += "Power: " + getReactorPower() + "\n";
-		rS += "Power Capacity: " + getReactorCapacity() + "\n";
-		rS += "Fuel: " + getFuel() + "\n";
-		rS += "Missiles: " + getMissiles() + "\n";
-		rS += "Drone Parts: " + getDroneParts() + "\n";
+		rS += "Power: " + reactor.getPower() + "\n";
+		rS += "Power Capacity: " + reactor.getCapacity() + "\n";
+		rS += "Fuel: " + inventory.getFuel() + "\n";
+		rS += "Missiles: " + inventory.getMissiles() + "\n";
+		rS += "Drone Parts: " + inventory.getDrones() + "\n";
 		rS += "Evasion: " + getEvasion() + "\n";
 		rS += "Oxygen: " + getOxygen() + "\n";
 		
