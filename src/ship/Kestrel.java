@@ -7,7 +7,7 @@ public class Kestrel extends Ship {
 		hull = 30;
 		maxHull = 30;
 		
-		reactor = new shipComponents.Reactor(3, 8);
+		reactor = new shipComponents.Reactor(3, 8, this);
 		
 		shipCrew.add(new crew.Human());
 		shipCrew.add(new crew.Human());
@@ -18,14 +18,14 @@ public class Kestrel extends Ship {
 		maxWeapons = 4;
 		maxDrones = 2;
 		
-		installedSystems.put(system.SystemEnum.SHIELDS, new system.Shields(2, 2));
-		installedSystems.put(system.SystemEnum.ENGINES, new system.Engines(1, 2));
-		installedSystems.put(system.SystemEnum.OXYGEN, new system.Oxygen(1, 1));
-		installedSystems.put(system.SystemEnum.WEAPONS, new system.Weapons(0, 3, startingWeapons, maxWeapons));
-		installedSystems.put(system.SystemEnum.MEDBAY, new system.Medbay(1, 1));
-		installedSystems.put(system.SystemEnum.PILOTING, new system.Piloting(1));
-		installedSystems.put(system.SystemEnum.SENSORS, new system.Sensors(1));
-		installedSystems.put(system.SystemEnum.DOORS, new system.Doors(1));
+		installedSystems.put(system.SystemEnum.SHIELDS, new system.Shields(2, 2, this));
+		installedSystems.put(system.SystemEnum.ENGINES, new system.Engines(1, 2, this));
+		installedSystems.put(system.SystemEnum.OXYGEN, new system.Oxygen(1, 1, this));
+		installedSystems.put(system.SystemEnum.WEAPONS, new system.Weapons(0, 3, startingWeapons, maxWeapons, this));
+		installedSystems.put(system.SystemEnum.MEDBAY, new system.Medbay(1, 1, this));
+		installedSystems.put(system.SystemEnum.PILOTING, new system.Piloting(1, this));
+		installedSystems.put(system.SystemEnum.SENSORS, new system.Sensors(1, this));
+		installedSystems.put(system.SystemEnum.DOORS, new system.Doors(1, this));
 		
 		inventory = new shipComponents.Inventory(16, 8, 2);
 		

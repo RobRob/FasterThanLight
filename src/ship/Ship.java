@@ -44,6 +44,10 @@ public abstract class Ship {
 	public int getHull() {return hull;}
 	public int getMaxHull() {return maxHull;}
 	
+	public Inventory getInventory() {return inventory;}
+	
+	public Reactor getReactor() {return reactor;}
+	
 	public ArrayList<crew.Crew> getShipCrew() {return shipCrew;}
 	public int getMaxCrewSize() {return maxCrewSize;}
 	

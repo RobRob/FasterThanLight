@@ -4,8 +4,9 @@ public abstract class SubSystem extends System {
 	protected int level;
 	protected int maxLevel;
 	
-	public SubSystem(int startLevel) {
+	public SubSystem(int startLevel, ship.Ship ship) {
 		level = startLevel;
+		this.ship = ship;
 	}
 	
 	public int getLevel() {return level;}

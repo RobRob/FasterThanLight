@@ -8,8 +8,8 @@ public class Shields extends MainSystem implements Updateable {
 	protected double shieldCapacity;
 	protected double chargeSpeed;
 	
-	public Shields(int startPow, int startCap) {
-		super(startPow, startCap);
+	public Shields(int startPow, int startCap, ship.Ship ship) {
+		super(startPow, startCap, ship);
 		name = "Shields";
 		type = SystemEnum.SHIELDS;
 		mannedBonus = true;

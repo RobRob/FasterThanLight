@@ -5,9 +5,10 @@ public abstract class MainSystem extends System {
 	protected int capacity;
 	protected int maxCapacity;
 	
-	public MainSystem(int startPow, int startCap) {
+	public MainSystem(int startPow, int startCap, ship.Ship ship) {
 		power = startPow;
 		capacity = startCap;
+		this.ship = ship;
 	}
 	
 	public int getPower() {return power;}

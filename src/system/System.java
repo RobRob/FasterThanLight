@@ -6,6 +6,7 @@ public abstract class System {
 	protected SystemEnum type;
 	protected boolean mannedBonus;
 	protected int damage = 0;
+	protected ship.Ship ship;
 	
 	layout.Room location;
 	

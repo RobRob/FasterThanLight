@@ -8,8 +8,8 @@ public class Weapons extends MainSystem {
 	protected int maxWeapons;
 	private double chargeSpeed = 1.0;
 	
-	public Weapons(int startPow, int startCap, weapon.Weapon[] startWeapons, int maxWeapons) {
-		super(startPow, startCap);
+	public Weapons(int startPow, int startCap, weapon.Weapon[] startWeapons, int maxWeapons, ship.Ship ship) {
+		super(startPow, startCap, ship);
 		name = "Weapons";
 		type = SystemEnum.WEAPONS;
 		mannedBonus = true;
@@ -21,6 +21,10 @@ public class Weapons extends MainSystem {
 	}
 	// GET AND SET METHODS
 	public ArrayList<InstalledWeapon> getWeapons() {return weapons;}
+	
+	public void update(double time) {
+		
+	}
 	
 
 	

@@ -6,7 +6,7 @@ public class Test {
 	
 	static Scanner input = new Scanner(System.in);
 	
-	public static void main(String[] args) {
+	public Test() {
 		ship.Ship kestrel = new ship.Kestrel();
 		crew.Crew testCrew = kestrel.getShipCrew().get(0);
 		layout.Square testSquareR4 = kestrel.getRooms().get("R4").firstFreeSquare();

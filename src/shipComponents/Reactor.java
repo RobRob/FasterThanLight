@@ -1,12 +1,15 @@
 package shipComponents;
+import java.util.*;
 
 public class Reactor {
 	
+	private ship.Ship ship;
 	private int currentPower, currentCapacity, maxCapacity = 25;
 	
-	public Reactor(int currP, int maxP) {
+	public Reactor(int currP, int maxP, ship.Ship ship) {
 		currentPower = currP;
 		currentCapacity = maxP;
+		this.ship = ship;
 	}
 	
 	public int getPower() {return currentPower;}
@@ -36,5 +39,24 @@ public class Reactor {
 			else {return false;}
 		}
 		else {return false;}
+	}
+	
+	public void gainBonusPower(int b) {
+		currentPower += b;
+		currentCapacity += b;
+		maxCapacity += b;
+	}
+	
+	public void loseBonusPower(int b) {
+		currentPower -= b;
+		currentCapacity -= b;
+		maxCapacity -= b;
+		if (currentPower < 0) {
+			reclaimPower(0 - currentPower, ship.getInstalledSystems());
+		}
+	}
+	
+	public void reclaimPower(int p, Map<system.SystemEnum, system.System> m) {
+		// go through the other systems on the ship and grab power to remove the deficit
 	}
 }
