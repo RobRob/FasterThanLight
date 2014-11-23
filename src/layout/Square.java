@@ -67,20 +67,15 @@ public class Square {
 	}
 	
 	public Square getRoute(Square destination) {
-		System.out.println(this.toString() + "is starting a getRoute");
 		if (route.containsKey(destination)) {
-			System.out.println(this.toString() + "has found the destination square in it's routemap");
 			return route.get(destination);
 		}
 		else {
 			ArrayList<Square> checkedSquares = new ArrayList<Square>();
 			checkedSquares.add(this);
 			Square returnSquare = null;
-			System.out.println(route.entrySet());
 			for (Map.Entry<Square, Square> s: route.entrySet()) {
-				System.out.println("Square is checking a square in routemap");
 				if (!checkedSquares.contains(s.getValue())) {
-					System.out.println("The square asks " + s.getValue().toString());
 					returnSquare = s.getValue().getRoute(destination, checkedSquares);
 					if (returnSquare != null) {
 						setRoute(destination, returnSquare);
@@ -93,9 +88,7 @@ public class Square {
 	}
 	
 	public Square getRoute(Square destination, ArrayList<Square> checkedSquares) {
-		System.out.println(this.toString() + "is starting a getRoute");
 		if (route.containsKey(destination)) {
-			System.out.println(this.toString() + "has found the destination square in it's routemap");
 			return route.get(destination);
 		}
 		else {
@@ -103,7 +96,6 @@ public class Square {
 			Square returnSquare = null;
 			for (Map.Entry<Square, Square> s: route.entrySet()) {
 				if (!checkedSquares.contains(s.getValue())) {
-					System.out.println("The square asks " + s.getValue().toString());
 					returnSquare = s.getValue().getRoute(destination, checkedSquares);
 					if (returnSquare != null) {
 						setRoute(destination, returnSquare);
