@@ -21,22 +21,20 @@ public class Reactor {
 	}
 	
 	// one method for adding and subtracting system power. negative power = power -> reactor, positive = power -> system
-	public boolean modifySystemPower(system.MainSystem sys, int power) {
-		if (power > 0) {
-			if (getPower() < power) {return false;}
-			else if (sys.recievePower(power)) {
-				modifyReactorPower(-power);
-				return true;
-			}
-			else {return false;}
+	public boolean sendPower(system.MainSystem sys, int power) {
+		if (getPower() < power) {return false;}
+		else if (sys.recievePower(power)) {
+			modifyReactorPower(-power);
+			return true;
 		}
-		else if (power < 0) {
-			if (getPower() + power > getMaxCapacity()) {return false;}
-			else if (sys.sendPower(power)) {
-				modifyReactorPower(power);
-				return true;
-			}
-			else {return false;}
+		else {return false;}
+	}
+	
+	public boolean recievePower(system.MainSystem sys, int power) {
+		if (getPower() - power > getMaxCapacity()) {return false;}
+		else if (sys.sendPower(power)) {
+			modifyReactorPower(power);
+			return true;
 		}
 		else {return false;}
 	}

@@ -13,7 +13,6 @@ public abstract class Ship {
 	protected int maxHull;
 	
 	protected Reactor reactor;
-	protected int maxReactorCapacity = 25;
 	
 	protected ArrayList<crew.Crew> shipCrew = new ArrayList<crew.Crew>();
 	protected int maxCrewSize = 8;
@@ -165,7 +164,6 @@ public abstract class Ship {
 		ArrayList<Integer> rightNeighbour;
 		ArrayList<Integer> downNeighbour;
 		ArrayList<Integer> leftNeighbour;
-		System.out.println(squares);
 		for (Map.Entry<List<Integer>, layout.Square> s: squares.entrySet()) {
 			
 			upNeighbour = new ArrayList<Integer>();
@@ -192,7 +190,6 @@ public abstract class Ship {
 			if (squares.containsKey(leftNeighbour)) {
 				s.getValue().setRoute(squares.get(leftNeighbour), squares.get(leftNeighbour));
 			}
-			System.out.println(s.getValue());
 		}
 	}
 	

@@ -15,7 +15,7 @@ public class SystemStatsBar extends JPanel {
 		setLayout(new GridLayout(1, 0));
 		for (Map.Entry<system.SystemEnum, system.System> sys : sysSet) {
 			if (sys.getValue() != null) {
-				systems.add(new SystemManager(sys.getValue()));
+				systems.add(new SystemManager(sys.getValue(), s.getReactor()));
 			}
 		}
 		for (SystemManager sm : systems) {
